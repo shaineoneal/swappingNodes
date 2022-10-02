@@ -4,6 +4,27 @@
 // p and afterp are pointers to the nodes to be swapped.
 void swapWithNext(Node * p)
 {
+    Node * afterp = p->next;
+    
+    //if p->prev = head
+    if(p->prev->prev == nullptr) {
+        //make afterp->prev point to head
+        afterp->prev = p->prev;
+        //make p->next point to value after afterp
+        p->next = afterp->next;
+        //make value after afterp point to p (instead of afterp)
+        p->next->prev = p;
+        p->prev->next = afterp; 
+        //make afterp->next point to p
+        
+    }
+    //if nextNode is last node in list (before tail)
+    //else if(afterp->next->next == nullptr) {
+        //afterp->prev = p->prev;
+        //p->next = afterp->next;
+    //}
+    afterp->next = p;
+    p->prev = afterp;
 }
 
 //Be sure to comment out the main() function when submitting to codePost
@@ -20,17 +41,17 @@ int main()
     printForwards(head);
     printBackwards(getTail(head));
     
-    cout << "Swap [4],[5]" << endl;
-    p = getNode(head, 4);
-    swapWithNext(p);
-    printForwards(head);
-    printBackwards(getTail(head));
-    
-    cout << "Swap [8],[9]" << endl;
-    p = getNode(head, 8);
-    swapWithNext(p);
-    printForwards(head);
-    printBackwards(getTail(head));
+    //cout << "Swap [4],[5]" << endl;
+    //p = getNode(head, 4);
+    //swapWithNext(p);
+    //printForwards(head);
+    //printBackwards(getTail(head));
+    //
+    //cout << "Swap [8],[9]" << endl;
+    //p = getNode(head, 8);
+    //swapWithNext(p);
+    //printForwards(head);
+    //printBackwards(getTail(head));
 }
 
 //Do not modify any functions below this line
